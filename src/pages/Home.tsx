@@ -17,12 +17,12 @@ export default function Home() {
           }}
         />
         <Container className="relative z-10 py-24 sm:py-32">
-          <div className="max-w-3xl">
+          <div className="max-w-5xl">
             <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm text-brand-200">
               <span className="h-2 w-2 rounded-full bg-brand-400" />
               IT Development Studio
             </p>
-            <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
+            <h1 className="whitespace-nowrap text-[clamp(1.25rem,5.2vw,3.75rem)] font-bold leading-tight tracking-tight">
               {site.tagline}
             </h1>
             <p className="mt-6 max-w-xl text-lg text-slate-300">{site.description}</p>
