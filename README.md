@@ -25,15 +25,20 @@ src/
   layouts/      RootLayout
   pages/        Home, Services, About, Contact, NotFound
   index.css     Tailwind + 디자인 토큰
-public/         favicon, 404.html(SPA 폴백)
-.github/        Pages 배포 워크플로우
+public/         favicon, 404.html(SPA 폴백), .nojekyll
 docs/DEVLOG.md  개발일지
 ```
 
-## 배포
-`main` 브랜치에 푸시하면 GitHub Actions가 자동으로 빌드 후 Pages에 배포합니다.
+## 배포 (gh-pages 수동 배포)
+빌드 결과물(`dist`)을 `gh-pages` 브랜치로 직접 푸시해 배포합니다.
+
+```bash
+npm run deploy   # = npm run build && gh-pages -d dist
+```
 
 > 최초 1회: 리포지토리 **Settings → Pages → Build and deployment → Source**를
-> **GitHub Actions**로 설정해야 합니다.
+> **Deploy from a branch → `gh-pages` / `(root)`** 로 설정합니다.
+> 코드를 `main`에 푸시하는 것만으로는 사이트가 갱신되지 않으며, 반드시
+> `npm run deploy`를 실행해야 라이브에 반영됩니다.
 
 자세한 개발 내역은 [docs/DEVLOG.md](docs/DEVLOG.md)를 참고하세요.

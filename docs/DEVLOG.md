@@ -4,6 +4,20 @@ IT 개발 전문 기업 **Tilon** 회사 사이트 개발 기록입니다.
 
 ---
 
+## 2026-06-15 — 배포 방식 변경: GitHub Actions → gh-pages 수동 배포
+
+### 한 일
+- GitHub Actions 워크플로우(`.github/workflows/deploy.yml`) 제거
+- `gh-pages` 패키지로 `dist`를 `gh-pages` 브랜치에 직접 푸시하는 **수동 배포**로 전환
+  - 배포 명령: `npm run deploy` (`npm run build && gh-pages -d dist`)
+- `public/.nojekyll` 추가 — GitHub Pages의 Jekyll 처리 비활성화
+- Pages 소스를 **Deploy from a branch → `gh-pages` / (root)** 로 변경
+
+### 참고
+- 이제 `main` 푸시만으로는 사이트가 갱신되지 않음. 반드시 `npm run deploy` 실행 필요.
+
+---
+
 ## 2026-06-15 — Hero에 Vanta.WAVES 애니메이션 배경 적용
 
 ### 한 일
