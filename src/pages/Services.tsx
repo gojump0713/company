@@ -13,18 +13,18 @@ export default function Services() {
         />
       </Section>
 
-      <Section className="bg-white">
+      <Section className="bg-bg">
         <div className="grid gap-8 lg:grid-cols-2">
           {services.map((s) => (
             <div
               key={s.title}
-              className="flex gap-5 rounded-2xl border border-slate-200 p-8"
+              className="flex gap-5 rounded-2xl border border-border bg-card p-8"
             >
               <div className="text-4xl">{s.icon}</div>
               <div>
                 <h3 className="text-xl font-semibold">{s.title}</h3>
-                <p className="mt-1 text-slate-500">{s.summary}</p>
-                <ul className="mt-4 grid gap-2 text-sm text-slate-600">
+                <p className="mt-1 text-muted">{s.summary}</p>
+                <ul className="mt-4 grid gap-2 text-sm text-muted">
                   {s.points.map((p) => (
                     <li key={p} className="flex items-center gap-2">
                       <span className="text-brand-500">▹</span>

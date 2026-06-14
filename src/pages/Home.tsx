@@ -36,19 +36,19 @@ export default function Home() {
       </section>
 
       {/* Stats */}
-      <section className="border-b border-slate-200 bg-white">
+      <section className="border-b border-border bg-bg">
         <Container className="grid grid-cols-2 gap-6 py-12 lg:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
               <div className="text-3xl font-bold text-brand-600 sm:text-4xl">{s.value}</div>
-              <div className="mt-1 text-sm text-slate-500">{s.label}</div>
+              <div className="mt-1 text-sm text-muted">{s.label}</div>
             </div>
           ))}
         </Container>
       </section>
 
       {/* Services */}
-      <Section id="services" className="bg-white">
+      <Section id="services" className="bg-bg">
         <SectionHeading
           eyebrow="Services"
           title="우리가 만드는 것"
@@ -58,12 +58,12 @@ export default function Home() {
           {services.map((s) => (
             <div
               key={s.title}
-              className="group rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-100/50"
+              className="group rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-brand-300 hover:shadow-lg hover:shadow-brand-500/10"
             >
               <div className="text-3xl">{s.icon}</div>
               <h3 className="mt-4 text-lg font-semibold">{s.title}</h3>
-              <p className="mt-1 text-sm text-slate-500">{s.summary}</p>
-              <ul className="mt-4 space-y-1.5 text-sm text-slate-600">
+              <p className="mt-1 text-sm text-muted">{s.summary}</p>
+              <ul className="mt-4 space-y-1.5 text-sm text-muted">
                 {s.points.map((p) => (
                   <li key={p} className="flex items-center gap-2">
                     <span className="text-brand-500">▹</span>
@@ -77,7 +77,7 @@ export default function Home() {
       </Section>
 
       {/* Process */}
-      <Section className="bg-slate-50">
+      <Section className="bg-surface">
         <SectionHeading
           eyebrow="Process"
           title="협업 프로세스"
@@ -85,17 +85,17 @@ export default function Home() {
         />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {process.map((step) => (
-            <div key={step.no} className="rounded-2xl bg-white p-6 shadow-sm">
+            <div key={step.no} className="rounded-2xl border border-border bg-card p-6 shadow-sm">
               <div className="text-sm font-bold text-brand-500">{step.no}</div>
               <h3 className="mt-2 text-lg font-semibold">{step.title}</h3>
-              <p className="mt-2 text-sm text-slate-600">{step.desc}</p>
+              <p className="mt-2 text-sm text-muted">{step.desc}</p>
             </div>
           ))}
         </div>
       </Section>
 
       {/* CTA */}
-      <Section className="bg-white">
+      <Section className="bg-bg">
         <div className="rounded-3xl bg-ink px-8 py-16 text-center text-white sm:px-16">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             함께 만들 준비가 되셨나요?

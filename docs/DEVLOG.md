@@ -4,6 +4,25 @@ IT 개발 전문 기업 **Tilon** 회사 사이트 개발 기록입니다.
 
 ---
 
+## 2026-06-15 — 다크/라이트 모드 + 5색 컬러 팔레트
+
+### 한 일
+- **시맨틱 컬러 토큰 도입** (`index.css`): `bg/fg/muted/surface/card/border`로 하드코딩
+  컬러(white·slate·ink)를 대체 → 테마 전환의 기반 마련
+- **다크 테마**: `[data-theme="dark"]` 토큰 오버라이드
+- **5색 액센트 팔레트**: `[data-accent]`로 brand 램프 교체 (블루·바이올렛·에메랄드·로즈·앰버)
+- **상태 관리**: `ThemeProvider`(Context) + `localStorage` 영속화, `useTheme` 훅
+- **UI**: `ThemeControls`(라이트/다크 토글 + 5색 스와치)를 **헤더 우측 끝**에 배치
+  (데스크톱: 우측 클러스터 / 모바일: 드롭다운 메뉴 하단)
+- **FOUC 방지**: `index.html`에 pre-paint 인라인 스크립트로 저장된 테마 즉시 적용
+- 폰트 로딩을 CSS `@import` → `<link>`로 이전 (빌드 경고 제거)
+
+### 검증
+- `npm run build` 경고 0
+- preview: CSS에 `[data-theme=dark]` + 4종 액센트 오버라이드 + 시맨틱 토큰 번들 확인
+
+---
+
 ## 2026-06-15 — 프로젝트 셋업 & 스타터 사이트 구축
 
 ### 개요

@@ -39,7 +39,7 @@ export function SectionHeading({
         </p>
       )}
       <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
-      {desc && <p className="mt-4 text-lg text-slate-600">{desc}</p>}
+      {desc && <p className="mt-4 text-lg text-muted">{desc}</p>}
     </div>
   )
 }

@@ -1,13 +1,12 @@
 @import 'tailwindcss';
-/* Pretendard webfont (must precede style rules) */
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css');
+/* Pretendard webfont is loaded via <link> in index.html */
 
 /* ---- Design tokens (Tailwind v4 @theme) ---- */
 @theme {
   --font-sans: 'Pretendard', 'Pretendard Variable', system-ui, -apple-system,
     'Segoe UI', Roboto, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
 
-  /* Brand palette */
+  /* Accent ramp — default: blue. Swapped at runtime via [data-accent]. */
   --color-brand-50: #eef4ff;
   --color-brand-100: #d9e6ff;
   --color-brand-200: #bcd3ff;
@@ -21,6 +20,81 @@
   --color-brand-950: #151d57;
 
   --color-ink: #0b1020;
+
+  /* Semantic surface tokens — light defaults. Swapped via [data-theme]. */
+  --color-bg: #ffffff;
+  --color-fg: #0b1020;
+  --color-muted: #51607a;
+  --color-surface: #f8fafc;
+  --color-card: #ffffff;
+  --color-border: #e2e8f0;
+}
+
+/* ---- Dark theme ---- */
+[data-theme='dark'] {
+  --color-bg: #0b1020;
+  --color-fg: #e8edf7;
+  --color-muted: #98a6be;
+  --color-surface: #0e1530;
+  --color-card: #161d3b;
+  --color-border: #26304b;
+}
+
+/* ---- Accent palettes (override the brand ramp) ---- */
+[data-accent='violet'] {
+  --color-brand-50: #f5f3ff;
+  --color-brand-100: #ede9fe;
+  --color-brand-200: #ddd6fe;
+  --color-brand-300: #c4b5fd;
+  --color-brand-400: #a78bfa;
+  --color-brand-500: #8b5cf6;
+  --color-brand-600: #7c3aed;
+  --color-brand-700: #6d28d9;
+  --color-brand-800: #5b21b6;
+  --color-brand-900: #4c1d95;
+  --color-brand-950: #2e1065;
+}
+
+[data-accent='emerald'] {
+  --color-brand-50: #ecfdf5;
+  --color-brand-100: #d1fae5;
+  --color-brand-200: #a7f3d0;
+  --color-brand-300: #6ee7b7;
+  --color-brand-400: #34d399;
+  --color-brand-500: #10b981;
+  --color-brand-600: #059669;
+  --color-brand-700: #047857;
+  --color-brand-800: #065f46;
+  --color-brand-900: #064e3b;
+  --color-brand-950: #022c22;
+}
+
+[data-accent='rose'] {
+  --color-brand-50: #fff1f2;
+  --color-brand-100: #ffe4e6;
+  --color-brand-200: #fecdd3;
+  --color-brand-300: #fda4af;
+  --color-brand-400: #fb7185;
+  --color-brand-500: #f43f5e;
+  --color-brand-600: #e11d48;
+  --color-brand-700: #be123c;
+  --color-brand-800: #9f1239;
+  --color-brand-900: #881337;
+  --color-brand-950: #4c0519;
+}
+
+[data-accent='amber'] {
+  --color-brand-50: #fffbeb;
+  --color-brand-100: #fef3c7;
+  --color-brand-200: #fde68a;
+  --color-brand-300: #fcd34d;
+  --color-brand-400: #fbbf24;
+  --color-brand-500: #f59e0b;
+  --color-brand-600: #d97706;
+  --color-brand-700: #b45309;
+  --color-brand-800: #92400e;
+  --color-brand-900: #78350f;
+  --color-brand-950: #451a03;
 }
 
 @layer base {
@@ -29,8 +103,25 @@
   }
 
   body {
-    @apply bg-white text-ink antialiased;
+    @apply bg-bg text-fg antialiased;
     font-family: var(--font-sans);
+  }
+
+  /* Smooth theme/accent transitions */
+  body,
+  header,
+  section,
+  footer,
+  a,
+  button,
+  input,
+  textarea,
+  [class*='border'],
+  [class*='bg-'] {
+    transition:
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      color 0.25s ease;
   }
 
   :focus-visible {

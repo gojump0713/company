@@ -13,7 +13,7 @@ export default function Contact() {
   }
 
   const field =
-    'w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition-colors focus:border-brand-500'
+    'w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-fg outline-none transition-colors placeholder:text-muted focus:border-brand-500'
 
   return (
     <>
@@ -25,13 +25,13 @@ export default function Contact() {
         />
       </Section>
 
-      <Section className="bg-white">
+      <Section className="bg-bg">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr]">
           <div>
             <h3 className="text-xl font-semibold">연락처</h3>
             <dl className="mt-6 space-y-4 text-sm">
               <div>
-                <dt className="text-slate-500">이메일</dt>
+                <dt className="text-muted">이메일</dt>
                 <dd>
                   <a href={`mailto:${site.email}`} className="text-brand-600 hover:underline">
                     {site.email}
@@ -39,22 +39,22 @@ export default function Contact() {
                 </dd>
               </div>
               <div>
-                <dt className="text-slate-500">전화</dt>
-                <dd className="text-slate-800">{site.phone}</dd>
+                <dt className="text-muted">전화</dt>
+                <dd className="text-fg">{site.phone}</dd>
               </div>
               <div>
-                <dt className="text-slate-500">주소</dt>
-                <dd className="text-slate-800">{site.address}</dd>
+                <dt className="text-muted">주소</dt>
+                <dd className="text-fg">{site.address}</dd>
               </div>
             </dl>
           </div>
 
           {sent ? (
-            <div className="grid place-items-center rounded-2xl border border-brand-200 bg-brand-50 p-10 text-center">
+            <div className="grid place-items-center rounded-2xl border border-brand-300 bg-brand-500/10 p-10 text-center">
               <div>
                 <div className="text-4xl">✅</div>
                 <h3 className="mt-4 text-lg font-semibold">문의가 접수되었습니다</h3>
-                <p className="mt-2 text-sm text-slate-600">
+                <p className="mt-2 text-sm text-muted">
                   빠른 시일 내에 답변드리겠습니다. 감사합니다.
                 </p>
               </div>

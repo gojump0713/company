@@ -27,16 +27,16 @@ export default function About() {
         />
       </Section>
 
-      <Section className="bg-white">
+      <Section className="bg-bg">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
             <h2 className="text-3xl font-bold tracking-tight">기술로 문제를 해결합니다</h2>
-            <p className="mt-5 text-slate-600">
+            <p className="mt-5 text-muted">
               {site.name}는 스타트업부터 엔터프라이즈까지 다양한 규모의 디지털 제품을
               만들어 온 IT 개발 전문 기업입니다. 우리는 기술 그 자체보다, 그 기술이
               만들어내는 비즈니스 임팩트를 중요하게 생각합니다.
             </p>
-            <p className="mt-4 text-slate-600">
+            <p className="mt-4 text-muted">
               제품의 첫 줄 코드부터 안정적인 운영까지, 신뢰할 수 있는 기술 파트너가
               되겠습니다.
             </p>
@@ -46,23 +46,23 @@ export default function About() {
             {stats.map((s) => (
               <div
                 key={s.label}
-                className="rounded-2xl border border-slate-200 p-6 text-center"
+                className="rounded-2xl border border-border bg-card p-6 text-center"
               >
                 <div className="text-3xl font-bold text-brand-600">{s.value}</div>
-                <div className="mt-1 text-sm text-slate-500">{s.label}</div>
+                <div className="mt-1 text-sm text-muted">{s.label}</div>
               </div>
             ))}
           </div>
         </div>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-surface">
         <SectionHeading eyebrow="Values" title="우리가 일하는 방식" />
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {values.map((v) => (
-            <div key={v.title} className="rounded-2xl bg-white p-8 shadow-sm">
+            <div key={v.title} className="rounded-2xl border border-border bg-card p-8 shadow-sm">
               <h3 className="text-lg font-semibold">{v.title}</h3>
-              <p className="mt-3 text-sm text-slate-600">{v.desc}</p>
+              <p className="mt-3 text-sm text-muted">{v.desc}</p>
             </div>
           ))}
         </div>

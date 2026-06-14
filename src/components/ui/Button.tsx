@@ -7,7 +7,7 @@ const styles: Record<Variant, string> = {
   primary:
     'bg-brand-600 text-white shadow-sm hover:bg-brand-700 active:bg-brand-800',
   outline:
-    'border border-slate-300 text-slate-800 hover:border-brand-400 hover:text-brand-700',
+    'border border-border text-fg hover:border-brand-400 hover:text-brand-600',
 }
 
 const base =
