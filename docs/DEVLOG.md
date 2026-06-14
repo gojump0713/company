@@ -4,6 +4,25 @@ IT 개발 전문 기업 **Tilon** 회사 사이트 개발 기록입니다.
 
 ---
 
+## 2026-06-15 — Hero에 Vanta.WAVES 애니메이션 배경 적용
+
+### 한 일
+- `three@0.134` + `vanta@0.5.24` 설치 (Vanta 호환 three 버전 고정)
+- `VantaWaves` 컴포넌트로 Hero 배경에 WAVES 효과 적용
+  - `three`/`vanta`를 **동적 import** → 초기 번들에서 분리(별도 청크, 지연 로드)
+  - 활성 **액센트 팔레트 색상**(`--color-brand-800`)으로 파도 색 연동
+  - `prefers-reduced-motion` 존중 → 모션 민감 사용자는 정적 배경 유지
+  - 언마운트 시 `effect.destroy()`로 정리, StrictMode 이중 호출 가드
+- `vanta`/`three` 타입 앰비언트 선언 추가(`src/types/vanta.d.ts`)
+- 콘텐츠 `z-10`, 글로우 오버레이 `z-[1]`로 캔버스 위 레이어링 정리
+- `vite.config.ts` `chunkSizeWarningLimit: 800` (three 청크 경고 정리)
+
+### 검증
+- `npm run build` 성공 — `three.module`(614KB)·`vanta.waves.min`(12KB) 별도 청크 분리 확인
+- preview: 홈 200, lazy 청크 정상 제공
+
+---
+
 ## 2026-06-15 — 다크/라이트 모드 + 5색 컬러 팔레트
 
 ### 한 일

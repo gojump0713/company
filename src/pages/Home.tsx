@@ -1,21 +1,22 @@
 import Section, { SectionHeading } from '@/components/ui/Section'
 import Container from '@/components/ui/Container'
 import { ButtonLink } from '@/components/ui/Button'
+import VantaWaves from '@/components/VantaWaves'
 import { process, services, site, stats } from '@/data/site'
 
 export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-ink text-white">
+      <VantaWaves className="relative overflow-hidden bg-ink text-white">
         <div
-          className="pointer-events-none absolute inset-0 opacity-40"
+          className="pointer-events-none absolute inset-0 z-[1] opacity-30"
           style={{
             background:
-              'radial-gradient(60% 60% at 70% 20%, rgba(51,102,255,0.45) 0%, rgba(11,16,32,0) 60%)',
+              'radial-gradient(60% 60% at 70% 20%, rgba(51,102,255,0.35) 0%, rgba(11,16,32,0) 60%)',
           }}
         />
-        <Container className="relative py-24 sm:py-32">
+        <Container className="relative z-10 py-24 sm:py-32">
           <div className="max-w-3xl">
             <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm text-brand-200">
               <span className="h-2 w-2 rounded-full bg-brand-400" />
@@ -33,7 +34,7 @@ export default function Home() {
             </div>
           </div>
         </Container>
-      </section>
+      </VantaWaves>
 
       {/* Stats */}
       <section className="border-b border-border bg-bg">

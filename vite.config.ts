@@ -7,6 +7,8 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   base: '/company/',
   plugins: [react(), tailwindcss()],
+  // three.js (Vanta) is lazy-loaded into its own chunk; raise the warning limit.
+  build: { chunkSizeWarningLimit: 800 },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
