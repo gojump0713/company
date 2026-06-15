@@ -2,13 +2,42 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import Section, { SectionHeading } from '@/components/ui/Section'
 import { site } from '@/data/site'
+import { supabase } from '@/lib/supabase'
 
 export default function Contact() {
   const [sent, setSent] = useState(false)
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    // TODO: 백엔드/폼 서비스(Formspree, EmailJS 등) 연동 지점
+    setError(null)
+
+    const form = e.currentTarget
+    const data = new FormData(form)
+    const payload = {
+      name: String(data.get('name') ?? '').trim(),
+      email: String(data.get('email') ?? '').trim(),
+      company: String(data.get('company') ?? '').trim() || null,
+      message: String(data.get('message') ?? '').trim(),
+    }
+
+    // Supabase 미설정 시: 안내만 하고 접수 처리 (정적 데모 폴백)
+    if (!supabase) {
+      console.warn('Supabase 미설정 — .env 의 VITE_SUPABASE_URL/ANON_KEY 를 확인하세요.')
+      setSent(true)
+      return
+    }
+
+    setBusy(true)
+    const { error: insertError } = await supabase.from('contacts').insert(payload)
+    setBusy(false)
+
+    if (insertError) {
+      setError('문의 전송에 실패했습니다. 잠시 후 다시 시도해 주세요.')
+      console.error('Supabase insert error:', insertError)
+      return
+    }
     setSent(true)
   }
 
@@ -62,20 +91,23 @@ export default function Contact() {
           ) : (
             <form onSubmit={handleSubmit} className="grid gap-4">
               <div className="grid gap-4 sm:grid-cols-2">
-                <input className={field} placeholder="이름" required />
-                <input className={field} type="email" placeholder="이메일" required />
+                <input name="name" className={field} placeholder="이름" required />
+                <input name="email" className={field} type="email" placeholder="이메일" required />
               </div>
-              <input className={field} placeholder="회사명 (선택)" />
+              <input name="company" className={field} placeholder="회사명 (선택)" />
               <textarea
+                name="message"
                 className={`${field} min-h-36 resize-y`}
                 placeholder="프로젝트에 대해 알려주세요"
                 required
               />
+              {error && <p className="text-sm text-red-500">{error}</p>}
               <button
                 type="submit"
-                className="justify-self-start rounded-full bg-brand-600 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
+                disabled={busy}
+                className="justify-self-start rounded-full bg-brand-600 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                문의 보내기
+                {busy ? '전송 중…' : '문의 보내기'}
               </button>
             </form>
           )}

@@ -19,6 +19,7 @@ export const nav: NavItem[] = [
   { label: '홈', to: '/' },
   { label: '서비스', to: '/services' },
   { label: '회사소개', to: '/about' },
+  { label: '게시판', to: '/board' },
   { label: '문의', to: '/contact' },
 ]
 
